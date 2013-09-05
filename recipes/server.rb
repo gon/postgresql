@@ -70,7 +70,7 @@ template "#{node['postgresql']['dir']}/pg_hba.conf" do
   owner "postgres"
   group "postgres"
   mode 00600
-  notifies :reload, 'service[postgresql]', :immediately
+  notifies :reload, resources(:service => 'postgresql'), :immediately
 end
 
 # NOTE: Consider two facts before modifying "assign-postgres-password":
